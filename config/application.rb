@@ -39,5 +39,13 @@ module PokedexRails
       g.helper          false
       g.channel         assets: false
     end
+
+    # Replace this with our domain on production
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: [:get, :post, :options]
+      end
+    end
   end
 end
