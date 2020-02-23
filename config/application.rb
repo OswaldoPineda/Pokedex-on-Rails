@@ -40,6 +40,8 @@ module PokedexRails
       g.channel         assets: false
     end
 
+    config.api_only = false
+
     # Replace this with our domain on production
     config.middleware.insert_before 0, Rack::Cors do
       allow do
