@@ -9,8 +9,8 @@ class CreatePokemon extends Component {
     super(props);
     this.state = {
       name: '',
+      kindId: 0,
       generation: 0,
-      kind: ''
     }
   };
 
@@ -28,8 +28,7 @@ class CreatePokemon extends Component {
         variables: this.state
       }
     }).then(res => {
-      console.log(res)
-      this.setState({ name: '', generation: 0, kind: '' });
+      this.setState({ name: '', generation: 0, kindId: 0 });
     });
   };
 
@@ -51,12 +50,12 @@ class CreatePokemon extends Component {
           placeholder="Generation"
           onChange={e => this.setState({generation: parseInt(e.target.value, 10)})}
           ></input>
-        <label>Kind:</label>
+        <label>Kind Id:</label>
         <input
           type="text"
-          value={this.state.kind}
-          placeholder="Kind"
-          onChange={e => this.setState({kind: e.target.value})}
+          value={this.state.kindId}
+          placeholder="Kind id"
+          onChange={e => this.setState({kindId: parseInt(e.target.value, 10)})}
           ></input>
         <button type="submit">Create Pokemon!!!!</button>
       </form>

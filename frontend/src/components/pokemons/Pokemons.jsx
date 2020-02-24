@@ -19,10 +19,11 @@ class Pokemons extends Component {
       url: API_URL,
       method: 'post',
       data: {
-        query: POKEMONS_QUERY
+        query: POKEMONS_QUERY,
+        variables: { first: 3 }
     }}).then((result) => {
-        const { data } = result.data;
-        this.setState({pokemons: data.pokemons})
+      const { data } = result.data;
+      this.setState({pokemons: data.pokemons})
     });
   };
 
@@ -52,7 +53,6 @@ class Pokemons extends Component {
               <article>
                 <h1>ID: { poke.id }</h1>
                 <span>Name: {poke.name}</span><br />
-                <span>Kind: {poke.kind}</span><br />
                 <span>Generation: {poke.generation}</span><br />
                 <Link to={`/pokemon/${poke.id}`}>Show</Link><br />
                 <Link to={`/pokemon/edit/${poke.id}`}>edit</Link><br />

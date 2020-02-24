@@ -1,18 +1,22 @@
-export const POKEMONS_QUERY = `{
-  pokemons {
-    id
-    name
-    kind
-    generation
+export const POKEMONS_QUERY = `
+  query Pokemons($first: Int!) {
+    pokemons(first: $first) {
+      id
+      name
+      generation
+      kinds {
+        name
+      }
+    }
   }
-}`;
+`;
 
 export const POKEMON_CREATE = `
-  mutation CreatePokemon($name: String!, $generation: Int!, $kind: String!) {
+  mutation CreatePokemon($name: String!, $kindId: ID!, $generation: Int!) {
     createPokemon(input: {
       name: $name,
-      generation: $generation,
-      kind: $kind
+      kindId: $kindId,
+      generation: $generation
     }) {
       errors
     }
