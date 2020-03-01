@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './sass/main.scss'
 import Pokemons from './components/pokemons/Pokemons';
 import Pokemon from './components/pokemons/Pokemon';
 import UpdatePokemon from './components/pokemons/UpdatePokemon';
