@@ -1,8 +1,11 @@
 // --- Utils ---
 @import 'utils/colors';
+@import 'utils/breakpoints';
+@import 'utils/mixins';
 
 // --- Layout ---
 @import 'layout/homepage';
 
 // --- Components ---
-@import 'components/pokemon';
+@import 'components/pokemon/pokemon';
+@import 'components/pokemon/pokemons';

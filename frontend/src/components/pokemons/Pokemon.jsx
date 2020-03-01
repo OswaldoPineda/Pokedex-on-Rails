@@ -30,9 +30,9 @@ class Pokemon extends Component {
   render () {
     const { pokemon } = this.state;
     return (
-      <section>
-        <h1>{pokemon.name}</h1>
-        <span>{pokemon.generation}</span>
+      <section class="">
+        <h1 class="">{pokemon.name}</h1>
+        <span class="">{pokemon.generation}</span>
       </section>
     );
   }

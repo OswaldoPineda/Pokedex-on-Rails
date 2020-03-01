@@ -20,7 +20,7 @@ class Pokemons extends Component {
       method: 'post',
       data: {
         query: POKEMONS_QUERY,
-        variables: { first: 3 }
+        variables: { first: 10 }
     }}).then((result) => {
       const { data } = result.data;
       this.setState({pokemons: data.pokemons})
@@ -35,7 +35,7 @@ class Pokemons extends Component {
         method: 'post',
         data: {
           query: POKEMON_DELETE,
-          variables: { id } 
+          variables: { id }
         }
       }).then(res => {
         const { data } = res.data;
@@ -47,16 +47,18 @@ class Pokemons extends Component {
 
   render() {
     return (
-      <main>
+      <main className="pokemon-list">
         { this.state.pokemons.map((poke) => {
             return (
-              <article>
+              <article className="pokemon-card">
                 <h1>ID: { poke.id }</h1>
-                <span>Name: {poke.name}</span><br />
-                <span>Generation: {poke.generation}</span><br />
-                <Link to={`/pokemon/${poke.id}`}>Show</Link><br />
-                <Link to={`/pokemon/edit/${poke.id}`}>edit</Link><br />
-                <button onClick={e => this.confirmDelete(poke.id)}>Delete</button>
+                <span>Name: {poke.name}</span>
+                <span>Generation: {poke.generation}</span>
+                <Link to={`/pokemon/${poke.id}`} className="pokemon-card__show">Show</Link>
+                <div className="buttons-container">
+                  <Link to={`/pokemon/edit/${poke.id}`} className="pokemon-card__edit">edit</Link>
+                  <button onClick={e => this.confirmDelete(poke.id)} className="pokemon-card__delete">Delete</button>
+                </div>
               </article>
             )
           }
