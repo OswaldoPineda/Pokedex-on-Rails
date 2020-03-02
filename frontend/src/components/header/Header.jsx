@@ -1,29 +1,37 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
-import { AUTH_TOKEN } from './../../utils/constans/constans';
+import Logo from '../../assets/images/logo.png';
 
 const Header = () => {
-  const authToken = localStorage.getItem(AUTH_TOKEN);
+
+  const toggleMobileMenu = () => {
+    const mobileMenu = document.getElementById('mobileMenu');
+    const linksContainer = document.querySelector('.links-container');
+    if(linksContainer.classList.contains('mobile-nav')) {
+      linksContainer.classList.remove('mobile-nav');
+      mobileMenu.classList.remove('is-active');
+    } else {
+      linksContainer.classList.add('mobile-nav');
+      mobileMenu.classList.add('is-active');
+    }
+  };
+
   return (
-    <header>
-      <Link to="/">Homepage</Link>
-      <br />
-      <Link to="/create">Create Pokemon View</Link>
-      <br />
-      <div>
-        {authToken ? (
-          <div
-            onClick={() => {
-              localStorage.removeItem(AUTH_TOKEN);
-              this.props.history.push(`/`);
-            }}
-          >
-            logout
-          </div>
-        ) : (
-          <Link to="/login">login</Link>
-        )}
+    <header className="header">
+      <div className="logo-container">
+        <Link to="/">
+          <img className="logo-container__image" src={ Logo  } />
+        </Link>
+      </div>
+      <div className="menu-toggle" id="mobileMenu" onClick={toggleMobileMenu}>
+        <span className="menu-toggle__bar"></span>
+        <span className="menu-toggle__bar"></span>
+        <span className="menu-toggle__bar"></span>
+      </div>
+      <div className="links-container">
+        <Link to="/" className="links-container__item">Homepage</Link>
+        <Link to="/create" className="links-container__item">Create Pokemon</Link>
       </div>
     </header>
   );
